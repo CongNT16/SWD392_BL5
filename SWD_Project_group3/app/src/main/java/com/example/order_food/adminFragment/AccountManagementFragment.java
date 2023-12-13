@@ -66,4 +66,5 @@ public class AccountManagementFragment extends Fragment {
         transaction.replace(R.id.fragmentContainerView2, fragment);
         transaction.commit();
     }
+
 }

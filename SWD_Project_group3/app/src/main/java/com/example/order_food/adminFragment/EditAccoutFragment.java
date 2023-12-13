@@ -78,7 +78,12 @@ public class EditAccoutFragment extends Fragment {
         transaction.commit();
     }
 
-    private void update(int userId) {
+    private void getAllUser() {
+        userService.getAllUser();
+    }
+
+    private void updateRole(int userId) {
+
         String roleName;
         int selectedRadioButtonId = radioGroupRole.getCheckedRadioButtonId();
 
@@ -88,17 +93,14 @@ public class EditAccoutFragment extends Fragment {
             roleName = "admin";
         }
 
-
         UserService userService = UserService.getInstance(requireContext());
 
         int isUpdated = userService.updateRole(userId, roleName);
         if (isUpdated == 1) {
-            Toast.makeText(requireContext(), "Account update successfully", Toast.LENGTH_SHORT).show();
+            displayRusult("ccount update successfully", Toast.LENGTH_SHORT)
         } else {
-            Toast.makeText(requireContext(), "Failed to update account", Toast.LENGTH_SHORT).show();
+            displayError("Failed to update role", Toast.LENGTH_SHORT)
         }
     }
-
-
 
 }

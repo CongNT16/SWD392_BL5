@@ -78,7 +78,7 @@ public class CreateFoodFragment extends Fragment {
         transaction.commit();
     }
 
-    private void insert() {
+    private Food insertFood() {
         String foodName = editFoodName.getText().toString().trim();
         String foodPrice = editFoodPrice.getText().toString().trim();
         String foodDescription = editFoodDescription.getText().toString().trim();
@@ -102,14 +102,15 @@ public class CreateFoodFragment extends Fragment {
 
                 if (insertionResult) {
                     clearFields();
-                    Toast.makeText(requireContext(), "Food item added successfully", Toast.LENGTH_SHORT).show();
+                    displayRusult("Food item added successfully");
                 } else {
-                    Toast.makeText(requireContext(), "Failed to add food item", Toast.LENGTH_SHORT).show();
+                    displayError("Failed to add food item");
                 }
             } else {
-                Toast.makeText(requireContext(), "Failed to save the image", Toast.LENGTH_SHORT).show();
+                displayError("Failed to save the image");
             }
         }
+        return newFood;
     }
 
     private String saveImageToInternalStorage(Uri selectedImageUri) {

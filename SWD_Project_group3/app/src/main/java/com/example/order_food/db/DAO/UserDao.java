@@ -53,4 +53,5 @@ public interface UserDao {
 
     @Query("UPDATE user set role=:role where id=:userId")
     int updateRole(int userId,String role);
+    
 }
